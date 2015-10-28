@@ -1,5 +1,7 @@
 # getfontname
+不需要其它库支持,使用python获取ttf及ttc字体文件的字体名称
 get ttf/ttc font file name 
+
 
 from getfontname import OTFName
 
