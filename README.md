@@ -12,5 +12,7 @@ print('font local family',ttf.getFontLocalInfo('Family'))
 out put 
 
 font file : c:/windows/fonts/msyh.ttf
+
 font en family ['Microsoft YaHei']
+
 font local family ['微软雅黑']
