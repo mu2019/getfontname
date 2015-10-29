@@ -3,19 +3,22 @@
 
 get ttf/ttc font file name 
 
+test.py
 
-from getfontname import OTFName
+import getfontname
+from getfontname import fontname,fontfile
 
-ttf=OTFName('c:/windows/fonts/msyh.ttf',langid=zh_cn)    
-print('font file :',ttf.FontFile)
-print('font en family',ttf.getFontInfo('Family'))
-print('font local family',ttf.getFontLocalInfo('Family'))    
+ffilename=getfontname.get_font_file('宋体')
+print('font file:', ffilename)
+
+fname=getfontname.get_font_name(ffilename)
+print('font name:',fname)
 
 
-out put 
 
-font file : c:/windows/fonts/msyh.ttf
+python test.py
 
-font en family ['Microsoft YaHei']
+out put >>>
 
-font local family ['微软雅黑']
+font file: C:\Windows/fonts/simsun.ttc
+font name: (['宋体', '新宋体'], ['Regular', 'Regular'])
