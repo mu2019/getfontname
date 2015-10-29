@@ -3,7 +3,7 @@
 
 from struct import unpack,calcsize
 import sys
-
+import platform,locale
 
 # encoding id define
 
@@ -49,7 +49,9 @@ see The OpenType Font File detail in delow site
 https://www.microsoft.com/typography/otspec/otff.htm
 
 '''
- 
+_ttc_header_fmt='>4sHHL'
+TTCHEADERSIZE=calcsize(_ttc_header_fmt)
+        
 class FontEntry():
     FormtStr='>HHHHHH'
     RawSize=calcsize(FormtStr)
@@ -192,6 +194,7 @@ class OTFName():
                 nroffset+=NameRecord.RawSize
                 
     def loadTTC(self):
+
         offset=TTCHEADERSIZE
         tag,mver,pver,numfonts=ttcheader=unpack(_ttc_header_fmt,self.RawFontStr[:offset])
         if mver==1: 
@@ -212,9 +215,29 @@ class OTFName():
         self.loadFontName(font)
         
 
+def get_font_name(fontfile,langid=''):
+        if platform.uname().system.upper() == 'WINDOWS':
+            lang=LOCALMAP.get(locale.getdefaultlocale()[1],getfontname.en_us)
+        else:
+            lang=en_us
+        lang=langid if langid else lang
+        otf=OTFName(fontfile,langid=lang)
+        return (otf.getFontLocalInfo('Family'),otf.getFontInfo('SubFamily'))
+    
+    
+
 if __name__=='__main__':
 
-    ttf=OTFName('c:/windows/fonts/msyh.ttf',langid=zh_cn)    
+    print('zh_cn',zh_cn)
+    ttf=OTFName('c:/windows/fonts/msyhbd.ttf',langid=zh_cn)    
     print('font file :',ttf.FontFile)
-    print('font en family',ttf.getFontInfo('Family'))
-    print('font local family',ttf.getFontLocalInfo('Family'))    
+    print('font family Id',ttf.getFontInfo('Id'))
+    print('font local family',ttf.getFontLocalInfo('Family'))
+    print('font local subfamily',ttf.getFontLocalInfo('SubFamily'))            
+    fn=r'C:\Windows/fonts/迷你简华隶.ttf'
+    #fn=r'c:\windows/fonts/simsun.ttc'
+    ttf=OTFName(fn,langid=zh_cn)    
+    print('font file :',ttf.FontFile)
+    print('font  family Id',ttf.getFontInfo('Id'))
+    print('font local family',ttf.getFontLocalInfo('Family'))
+    print('font local subfamily',ttf.getFontLocalInfo('SubFamily'))        
