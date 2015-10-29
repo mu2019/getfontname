@@ -3,6 +3,8 @@
 
 get ttf/ttc font file name 
 
+--------------------------------
+
 test.py
 
 import getfontname
