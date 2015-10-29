@@ -35,12 +35,17 @@ FONTNAMEMAP={
     'Id':3,
     'FullName':4,
     'Version':5,
-    'PostscriptName':6,
+    'PostscriptNamge':6,
     'TradeMark':7,
     'Manufacture':8,
     'Designer':9,
     'TypographicName':16,
     'TypographicSubName':17
+    }
+
+
+LOCALMAP={
+    'cp936':zh_cn
     }
 
 
@@ -217,7 +222,7 @@ class OTFName():
 
 def get_font_name(fontfile,langid=''):
         if platform.uname().system.upper() == 'WINDOWS':
-            lang=LOCALMAP.get(locale.getdefaultlocale()[1],getfontname.en_us)
+            lang=LOCALMAP.get(locale.getdefaultlocale()[1],en_us)
         else:
             lang=en_us
         lang=langid if langid else lang
