@@ -12,7 +12,5 @@ setup(name = 'getfontname',
       license='MIT',
       platforms = 'any',
       packages=['getfontname']
-      #py_modules = find_packages(), # ['getfontname'],
-      #scripts=['getfontname/fontname.py','getfontname/fontfile.py','getfontname/__init__.py'],
       )
       
