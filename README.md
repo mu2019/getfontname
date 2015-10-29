@@ -17,7 +17,7 @@ fname=getfontname.get_font_name(ffilename)
 
 print('font name:',fname)
 
-
+----------------------------
 
 python test.py
 
