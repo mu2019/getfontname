@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import  getfontname
+from .fontname import *
 import platform
 import os
 import locale
 
 LOCALMAP={
-    'cp936':getfontname.zh_cn
+    'cp936':zh_cn
     }
 
 class FontMapMate(type):
@@ -24,7 +24,7 @@ class FontMapMate(type):
         '''
         if platform.uname().system.upper() == 'WINDOWS':
             fontdir=[os.getenv('windir')+'/fonts']
-            lang=LOCALMAP.get(locale.getdefaultlocale()[1],getfontname.en_us)
+            lang=LOCALMAP.get(locale.getdefaultlocale()[1],en_us)
         else:
             fontdir=['/usr/share/fonts','usr/share/fonts/truetype','~/.fonts']
             lang=en_us
@@ -35,7 +35,7 @@ class FontMapMate(type):
                 if f[-4:].upper() in ('.OTF','.TTF','.TTC'):
                     fonts.append('%s/%s' % (fdir,f))
         for fn in fonts:
-            otf=getfontname.OTFName(fn,langid=lang)
+            otf=OTFName(fn,langid=lang)
             lfm=otf.getFontLocalInfo('Family')
             fm=otf.getFontInfo('Family')
             sfm=otf.getFontInfo('SubFamily')
