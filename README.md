@@ -21,4 +21,5 @@ python test.py
 out put >>>
 
 font file: C:\Windows/fonts/simsun.ttc
+
 font name: (['宋体', '新宋体'], ['Regular', 'Regular'])
