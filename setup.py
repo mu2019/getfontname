@@ -4,7 +4,7 @@
 from setuptools import setup,find_packages
 
 setup(name = 'getfontname',
-      version = '0.0.1',
+      version = '0.0.2',
       description = 'get font name from the ttf/ttc font file.',
       author = 'Chen MuSheng',
       author_email = 'sheng.2179@gmail.com',
